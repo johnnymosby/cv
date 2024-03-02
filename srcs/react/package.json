@@ -1,0 +1,22 @@
+{
+  "name": "personal_website",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Ruslan Basyrov",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
