@@ -1,8 +1,19 @@
-FROM alpine:3.19
+# syntax=docker/dockerfile:1
 
-RUN apk add --update npm \
-	&& npm install --save-dev jest \
-	&& npm install --save react react-dom \
-	&& npm install --save-dev @babel/preset-env @babel/preset-react \
-	&& npm install --save-dev @babel/plugin-transform-runtime \
-	&& npm install --save @babel/runtime
+FROM alpine:3.19 as builder
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+ENV SAVE_DIR /app/save
+
+RUN apk update \
+	&& apk add --no-cache npm \
+	&& npm install \
+	&& npm run build \
+	&& tar -czvf public/build.js.tar public/build.js
+
+EXPOSE 8080
+
+#ENTRYPOINT [ "./entrypoint.sh" ]
