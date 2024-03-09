@@ -1,1 +1,3 @@
 srcs/react/node_modules/
+srcs/react/public/build.js
+**/.DS_Store
