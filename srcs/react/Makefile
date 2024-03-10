@@ -15,11 +15,11 @@ run:
 
 copy-build: build
 	@id=$$(docker create $(IMAGE_NAME)); \
-	docker cp $$id:$(BUILD_PATH_TAR) - > $(HOST_PATH_TAR); \
+	docker cp $$id:$(BUILD_PATH_TAR) $(HOST_PATH_TAR); \
 	docker rm -v $$id; \
-	tar -xzvf $(HOST_PATH_TAR); \
-	tar -xzvf build.js.tar; \
-	rm build.js.tar; \
-	rm ./public/build.js.tar
+	cd $(HOST_PATH) && \
+	tar -xf build.js.tar && \
+	tar -xf build.js && \
+	rm -f build.js.tar build.js
 
 .PHONY: build run
